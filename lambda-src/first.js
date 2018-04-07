@@ -7,9 +7,10 @@ const config = {
 
 const client = new line.Client(config);
 
-exports.handler = async function(event, context, callback) {
-    console.log(event, context);
+exports.handler = function(event, context, callback) {
+    console.log("this");
 
+    console.warn("audfhauisdfhu");
     callback(null, {
         statusCode: 200,
         body: JSON.stringify("hello world", null, 2)
