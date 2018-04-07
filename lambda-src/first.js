@@ -8,13 +8,10 @@ const config = {
 const client = new line.Client(config);
 
 exports.handler = async function(event, context, callback) {
-    client.pushMessage("1572918706", {
-        type: "text",
-        text: "hello world!"
-    });
+    console.log(event, context);
 
     callback(null, {
         statusCode: 200,
-        body: JSON.stringify(client, null, 2)
+        body: JSON.stringify("hello world", null, 2)
     });
 }
