@@ -19,6 +19,7 @@
   "homepage": "https://github.com/sakapun/linebot_sample#readme",
   "dependencies": {
     "@line/bot-sdk": "^6.0.1",
+    "lodash": "^4.17.5",
     "netlify-lambda": "^0.3.1"
   }
 }

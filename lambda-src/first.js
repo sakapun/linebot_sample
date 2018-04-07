@@ -8,9 +8,17 @@ const config = {
 const client = new line.Client(config);
 
 exports.handler = function(event, context, callback) {
-    console.log("this");
+    const events = JSON.parse(event.body).events;
+    events.map(ev => {
+        console.log(ev.replyToken);
+        client.replyMessage(ev.replyToken, {
+            type: "text",
+            text: "this is reply"
+        });
+    });
 
-    console.warn("audfhauisdfhu");
+
+
     callback(null, {
         statusCode: 200,
         body: JSON.stringify("hello world", null, 2)
