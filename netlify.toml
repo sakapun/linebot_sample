@@ -1,2 +1,6 @@
 [build]
   functions = "lambda-build"
+
+[[redirect]]
+  from = "/.netlify/functions/*"
+  to = "/api/*"
