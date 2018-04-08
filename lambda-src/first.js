@@ -9,13 +9,35 @@ const client = new line.Client(config);
 
 exports.handler = function(event, context, callback) {
     const events = JSON.parse(event.body).events;
-    events.map(ev => {
-        console.log(ev.replyToken);
-        client.replyMessage(ev.replyToken, {
-            type: "text",
-            text: "this is reply"
-        });
-    });
+     events.map(async (ev) => {
+         console.log(ev);
+         // const afdasidfa = await client.getMessageContent(ev.message.id);
+         // // console.log(afdasidfa);
+         // afdasidfa.on('data', (data) => {
+         //     console.log(data);
+         // })
+
+         client.replyMessage(ev.replyToken, {
+             "type": "template",
+             "altText": "this is a confirm template",
+             "template": {
+                 "type": "confirm",
+                 "text": "Are you sure?",
+                 "actions": [
+                     {
+                         "type": "message",
+                         "label": "Yes",
+                         "text": "mu"
+                     },
+                     {
+                         "type": "message",
+                         "label": "No",
+                         "text": "no"
+                     }
+                 ]
+             }
+         });
+     });
 
 
 

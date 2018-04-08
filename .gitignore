@@ -114,3 +114,5 @@ typings/
 .next
 
 /lambda-build/
+
+.env
