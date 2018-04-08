@@ -23,6 +23,7 @@
     "dotenv": "^5.0.1",
     "lodash": "^4.17.5",
     "netlify-lambda": "^0.3.1",
-    "request": "^2.85.0"
+    "request": "^2.85.0",
+    "s3-upload-stream": "^1.0.7"
   }
 }
