@@ -12,11 +12,27 @@ const client = new line.Client(config);
 exports.handler = function(event, context, callback) {
     const events = JSON.parse(event.body).events;
      events.map(async (ev) => {
-         console.log(ev);
-         const afdasidfa = await client.getMessageContent(ev.message.id);
-         // console.log(afdasidfa);
-         const pugera = (...ev) => {console.log(ev)};
-         uploadS3(afdasidfa, "hogehoge"+ new Date().getTime() + ".jpg", pugera);
+         switch (ev.message.type){
+             case "image":
+                 const streamMedia = await client.getMessageContent(ev.message.id);
+                 // console.log(streamMedia);
+                 const callbackAfterSaved = (callbackedArg) => {
+                     client.replyMessage(ev.replyToken, {
+                         type: "text",
+                         text: callbackedArg.Location
+                     });
+                     console.log(callbackedArg);
+                 };
+                 uploadS3(streamMedia, "hogehoge"+ new Date().getTime() + ".jpg", callbackAfterSaved);
+                 break;
+             default:
+                 client.replyMessage(ev.replyToken, {
+                     type: "text",
+                     text: "画像ではありません"
+                 })
+                 break;
+         }
+         console.log(ev)
 
          // client.replyMessage(ev.replyToken, {
          //     "type": "template",
@@ -44,6 +60,6 @@ exports.handler = function(event, context, callback) {
 
     callback(null, {
         statusCode: 200,
-        body: JSON.stringify(uploadS3, null, 2)
+        body: JSON.stringify("wwww", null, 2)
     });
 }
