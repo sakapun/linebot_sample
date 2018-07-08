@@ -3,6 +3,8 @@ exports.handler = async function(event, context, callback) {
 
     callback(null, {
         statusCode: 200,
-        body: JSON.stringify({test: 89889})
+        body: JSON.stringify({
+            fulfillmentText: "89889"
+        })
     });
 }
