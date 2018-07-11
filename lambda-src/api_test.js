@@ -1,5 +1,6 @@
 exports.handler = async function(event, context, callback) {
 
+    console.log(process.env.CHOME)
 
     callback(null, {
         statusCode: 200,
